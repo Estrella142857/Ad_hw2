@@ -1,0 +1,20 @@
+public int getCount(ViewGroup vg)
+{
+        int count=vg.getChildCount();	//获取孩子的个数
+
+        //循环获取vg子View
+        for(int i=0;i<count;i++)
+        {
+                View child=vg.getChildAt(i);	//获取vg第i个孩子
+                if(child instanceof ViewGroup)
+                {
+                        //如果子View是ViewGroup，则表示它有孩子，用递归获取子View数量
+                        int childCount = getCount((ViewGroup)child);
+                        count+=childCount;
+                 }else 
+	{
+                        count++;//只有自己一个view
+            	}
+        }
+        return count;    
+}
